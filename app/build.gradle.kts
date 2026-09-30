@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "in.selorria.companion"
+    namespace = "com.selorria.companion"
     compileSdk = 35
 
     defaultConfig {

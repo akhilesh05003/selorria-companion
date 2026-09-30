@@ -1,4 +1,4 @@
-package in.selorria.companion
+package com.selorria.companion
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -50,12 +50,16 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(this, ReminderReceiver::class.java).apply {
             putExtra("message", message)
         }
+
         val pending = PendingIntent.getBroadcast(
-            this, 1001, intent,
+            this,
+            1001,
+            intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
         val alarm = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
         if (android.os.Build.VERSION.SDK_INT >= 31 && !alarm.canScheduleExactAlarms()) {
             startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
             statusText.text = "Please allow exact alarms, then tap Set Reminder again."
@@ -63,13 +67,22 @@ class MainActivity : ComponentActivity() {
         }
 
         if (android.os.Build.VERSION.SDK_INT >= 23) {
-            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, target.timeInMillis, pending)
+            alarm.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                target.timeInMillis,
+                pending
+            )
         } else {
-            alarm.setExact(AlarmManager.RTC_WAKEUP, target.timeInMillis, pending)
+            alarm.setExact(
+                AlarmManager.RTC_WAKEUP,
+                target.timeInMillis,
+                pending
+            )
         }
 
         statusText.text = "Reminder set for %02d:%02d".format(
-            timePicker.hour, timePicker.minute
+            timePicker.hour,
+            timePicker.minute
         )
     }
 }

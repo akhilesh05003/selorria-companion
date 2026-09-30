@@ -1,4 +1,4 @@
-package in.selorria.companion
+package com.selorria.companion
 
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -25,7 +25,6 @@ class ReminderActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         }
 
         findViewById<Button>(R.id.snoozeButton).setOnClickListener {
-            // MVP: simple local snooze can be added in the next iteration.
             finish()
         }
     }
@@ -33,7 +32,12 @@ class ReminderActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             tts.language = Locale.getDefault()
-            tts.speak(message, TextToSpeech.QUEUE_FLUSH, null, "selorria-reminder")
+            tts.speak(
+                message,
+                TextToSpeech.QUEUE_FLUSH,
+                null,
+                "selorria-reminder"
+            )
         }
     }
 

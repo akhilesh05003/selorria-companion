@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:gravity="center"
+    android:padding="28dp" android:background="#FFF8FC"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView android:text="SELORRIA" android:textAllCaps="true"
+        android:letterSpacing="0.18" android:textSize="13sp"
+        android:textColor="#8A5A9E"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <ImageView android:id="@+id/companionImage" android:src="@drawable/companion_face"
+        android:contentDescription="Selorria companion"
+        android:layout_marginTop="18dp"
+        android:layout_width="190dp" android:layout_height="230dp"/>
+
+    <TextView android:id="@+id/messageText" android:text="Good morning!"
+        android:textSize="28sp" android:textStyle="bold"
+        android:textColor="#302735" android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <TextView android:text="Your companion is here."
+        android:textSize="15sp" android:textColor="#766A79"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <LinearLayout android:orientation="horizontal"
+        android:gravity="center" android:layout_marginTop="28dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/snoozeButton" android:text="Snooze 5 min"
+            android:textAllCaps="false" android:layout_marginEnd="8dp"
+            android:layout_width="wrap_content" android:layout_height="52dp"/>
+        <Button android:id="@+id/dismissButton" android:text="I'm Up"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content" android:layout_height="52dp"/>
+    </LinearLayout>
+</LinearLayout>

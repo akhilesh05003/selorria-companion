@@ -19,15 +19,11 @@ android {
     }
 }
 
-// Keep Java and Kotlin on the same JVM target.
-tasks.withType<JavaCompile>().configureEach {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
-}
-
+// The Android build environment is compiling Java at JVM 1.8.
+// Match Kotlin to Java to avoid JVM-target incompatibility.
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
+        jvmTarget.set(JvmTarget.JVM_1_8)
     }
 }
 

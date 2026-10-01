@@ -1,99 +1,45 @@
-# Selorria Companion — Phase 2.2
+# Selorria Companion Phase 2.2 — Clean Android Build
 
-## Facial Expression + Eye Behavior Foundation
+This package is a clean replacement for the previous mixed-source repository.
 
-This is a complete buildable package for the Selorria Companion Phase 2.2 test.
+## Important
 
-### Included
+Replace the contents of the GitHub repository with this package. Do not merge individual Kotlin files into the old repository.
 
-- Android Kotlin + Jetpack Compose
-- SceneView / Filament 3D renderer
-- GLB character pipeline
-- AlarmManager exact reminder scheduling
-- Reminder receiver
-- Full-screen companion alarm screen
-- Android Text-to-Speech
-- 3D camera orbit / pan / zoom
-- Phase 2.1 idle-capable character scene
-- Phase 2.2 expression controller
-- Automatic blink scheduler
-- Neutral / Happy / Thinking expression controls
-- GitHub Actions APK build workflow
-- Placeholder GLB so the project can be built and tested immediately
+The previous build log showed three separate problems:
 
-### Expression contract for the production lady character
+1. Old `MainActivity.kt` references (`statusText`, `timePicker`, `saveButton`) that do not belong to the current Compose implementation.
+2. A duplicate `ReminderReceiver` declaration.
+3. Kotlin compiler/runtime mismatch: compiler 2.2.x versus Kotlin stdlib 2.4.20.
 
-The final rigged GLB should contain animation clips with these names:
+This package removes the stale sources and aligns Kotlin to 2.4.20.
 
-- `Idle`
-- `Blink`
-- `Happy`
-- `Thinking`
-- `Talk`
+## Build stack
 
-The app already switches between these names. If a clip exists in the GLB,
-SceneView will play it. If the current placeholder has no such facial clips,
-the controller still works but there will be no facial deformation to display.
+- Android Gradle Plugin: 9.2.0
+- Gradle: 9.4.1
+- Java: 17
+- Kotlin: 2.4.20
+- Compose Compiler plugin: 2.4.20
+- compileSdk: 37
+- targetSdk: 36
+- minSdk: 24
+- SceneView: 4.51.0
 
-SceneView supports glTF/GLB skeletal and morph animations, and `ModelNode`
-accepts an animation name, loop flag and playback speed.
+## GitHub Actions
 
-### Why the real face is not faked in this package
+The workflow installs Gradle 9.4.1 directly and runs `gradle :app:assembleDebug`. It intentionally does not depend on a stale `gradlew` wrapper from the old repository.
 
-The supplied placeholder model is not a production humanoid facial rig.
-Real blinking and expressions require a character asset containing either:
+## Package
 
-1. facial bones / skeletal animation, or
-2. morph targets / blend shapes.
+The Android namespace and application ID are:
 
-The next asset should therefore be a rigged GLB based on the selected Selorria
-lady design.
+`com.selorria.companion`
 
-### Phase roadmap
+There should be exactly one `ReminderReceiver` and no `ReminderActivity` in this Phase 2.2 package.
 
-2.0 — 3D renderer + character slot
-2.1 — idle / breathing foundation
-2.2 — expression controller + blink foundation
-2.3 — production rig + real facial animation
-2.4 — speech-driven lip sync
-2.5 — gestures and emotional state
-2.6 — AI-generated reminder dialogue
-2.7 — consent-based personalized voice
+## APK
 
+After GitHub Actions succeeds, download the artifact:
 
-## Android phone compatibility
-
-This build intentionally uses:
-- compileSdk 37
-- targetSdk 36
-- minSdk 24
-- Android Gradle Plugin 9.2.0
-- Gradle 9.4.1
-- Java 17
-
-`compileSdk` controls the APIs available while compiling; it does not set the
-minimum Android version on which the app can run. `minSdk 24` keeps the app
-installable on Android 7.0+ devices when the device hardware and other runtime
-requirements are satisfied.
-
-SceneView's current Android dependency requires compileSdk 37. The project
-therefore uses the matching Android build toolchain instead of trying to force
-an older compile SDK.
-
-
-## Wrapper fix
-
-The Gradle wrapper is explicitly pinned to Gradle 9.4.1:
-`gradle/wrapper/gradle-wrapper.properties`
-
-GitHub Actions uses `./gradlew` so the repository wrapper and CI build use
-the same Gradle version.
-
-
-## AGP 9 built-in Kotlin migration
-
-AGP 9+ provides built-in Kotlin support. The `org.jetbrains.kotlin.android`
-plugin is intentionally NOT applied. The Compose Compiler Gradle plugin remains
-applied because this module uses Jetpack Compose.
-
-The old `android.kotlinOptions {}` block was also removed.
+`selorria-companion-phase2-debug-apk`

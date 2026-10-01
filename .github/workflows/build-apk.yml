@@ -19,15 +19,15 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Gradle 8.11.1
+      - name: Set up Gradle 9.4.1
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "8.11.1"
+          gradle-version: "9.4.1"
 
       - name: Verify Gradle
         run: gradle --version
 
-      - name: Build debug APK
+      - name: Build APK
         run: gradle :app:assembleDebug
 
       - name: Upload APK

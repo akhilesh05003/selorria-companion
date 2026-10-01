@@ -88,3 +88,12 @@ The Gradle wrapper is explicitly pinned to Gradle 9.4.1:
 
 GitHub Actions uses `./gradlew` so the repository wrapper and CI build use
 the same Gradle version.
+
+
+## AGP 9 built-in Kotlin migration
+
+AGP 9+ provides built-in Kotlin support. The `org.jetbrains.kotlin.android`
+plugin is intentionally NOT applied. The Compose Compiler Gradle plugin remains
+applied because this module uses Jetpack Compose.
+
+The old `android.kotlinOptions {}` block was also removed.

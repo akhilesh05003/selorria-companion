@@ -1,52 +1,61 @@
-# Selorria Companion — MVP v0.1
+# Selorria Companion — Phase 2.2
 
-Selorria Companion is an Android MVP for a character-driven reminder experience.
+## Facial Expression + Eye Behavior Foundation
 
-## MVP workflow
+This is a complete buildable package for the Selorria Companion Phase 2.2 test.
 
-1. Enter a reminder message.
-2. Choose a time.
-3. Tap Set Reminder.
-4. At the scheduled time, the companion screen opens.
-5. The companion displays the message and reads it aloud using Android Text-to-Speech.
+### Included
 
-## Current scope
+- Android Kotlin + Jetpack Compose
+- SceneView / Filament 3D renderer
+- GLB character pipeline
+- AlarmManager exact reminder scheduling
+- Reminder receiver
+- Full-screen companion alarm screen
+- Android Text-to-Speech
+- 3D camera orbit / pan / zoom
+- Phase 2.1 idle-capable character scene
+- Phase 2.2 expression controller
+- Automatic blink scheduler
+- Neutral / Happy / Thinking expression controls
+- GitHub Actions APK build workflow
+- Placeholder GLB so the project can be built and tested immediately
 
-- One scheduled reminder at a time
-- One cute companion illustration
-- Android system TTS
-- Exact alarm scheduling
-- Reminder screen with Snooze / I'm Up controls
+### Expression contract for the production lady character
 
-## Deliberately not included yet
+The final rigged GLB should contain animation clips with these names:
 
-- Personalized voice cloning
-- Calendar integration
-- Cloud AI
-- Multiple characters
-- 3D animated model
-- Conversation
-- Accounts/sync
+- `Idle`
+- `Blink`
+- `Happy`
+- `Thinking`
+- `Talk`
 
-## Build
+The app already switches between these names. If a clip exists in the GLB,
+SceneView will play it. If the current placeholder has no such facial clips,
+the controller still works but there will be no facial deformation to display.
 
-Open the project in Android Studio and let Gradle sync.
+SceneView supports glTF/GLB skeletal and morph animations, and `ModelNode`
+accepts an animation name, loop flag and playback speed.
 
-For Android 12+, the app may ask for permission to schedule exact alarms.
-For Android 13+, notification permission is declared for future notification-based flows.
+### Why the real face is not faked in this package
 
-This is a development MVP, not a production release.
+The supplied placeholder model is not a production humanoid facial rig.
+Real blinking and expressions require a character asset containing either:
 
+1. facial bones / skeletal animation, or
+2. morph targets / blend shapes.
 
-## Build APK online with GitHub Actions
+The next asset should therefore be a rigged GLB based on the selected Selorria
+lady design.
 
-1. Create a new GitHub repository.
-2. Upload the contents of this project to the repository's `main` branch.
-3. Open **Actions**.
-4. Select **Build Selorria Companion APK**.
-5. Run the workflow.
-6. Open the completed workflow run.
-7. Under **Artifacts**, download `selorria-companion-debug-apk`.
-8. Extract the downloaded artifact and install `app-debug.apk` on your Android phone.
+### Phase roadmap
 
-You do not need Android Studio for this online build.
+2.0 — 3D renderer + character slot
+2.1 — idle / breathing foundation
+2.2 — expression controller + blink foundation
+2.3 — production rig + real facial animation
+2.4 — speech-driven lip sync
+2.5 — gestures and emotional state
+2.6 — AI-generated reminder dialogue
+2.7 — consent-based personalized voice

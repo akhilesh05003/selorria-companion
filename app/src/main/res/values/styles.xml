@@ -1,9 +1,8 @@
 <resources>
-    <style name="Theme.SelorriaCompanion" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Selorria" parent="android:style/Theme.Material.Light.NoActionBar">
         <item name="android:fontFamily">sans</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">#FFF8FC</item>
         <item name="android:navigationBarColor">#FFF8FC</item>
-        <item name="android:colorAccent">#8A5A9E</item>
     </style>
 </resources>

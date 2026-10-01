@@ -1,27 +1,31 @@
-name: Build Selorria Companion APK
+name: Build Selorria Companion Phase 2.2
 
 on:
-  workflow_dispatch:
   push:
-    branches: ["main"]
+    branches: ["main", "master"]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Gradle
+      - name: Set up Gradle 8.11.1
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "8.10"
+          gradle-version: "8.11.1"
+
+      - name: Verify Gradle
+        run: gradle --version
 
       - name: Build debug APK
         run: gradle :app:assembleDebug
@@ -29,5 +33,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: selorria-companion-debug-apk
+          name: selorria-companion-phase2-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk

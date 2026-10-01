@@ -79,3 +79,12 @@ requirements are satisfied.
 SceneView's current Android dependency requires compileSdk 37. The project
 therefore uses the matching Android build toolchain instead of trying to force
 an older compile SDK.
+
+
+## Wrapper fix
+
+The Gradle wrapper is explicitly pinned to Gradle 9.4.1:
+`gradle/wrapper/gradle-wrapper.properties`
+
+GitHub Actions uses `./gradlew` so the repository wrapper and CI build use
+the same Gradle version.

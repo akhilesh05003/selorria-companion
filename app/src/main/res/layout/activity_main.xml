@@ -1,44 +1,12 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#FFF8FC">
-    <LinearLayout
-        android:orientation="vertical" android:padding="24dp"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView android:text="Selorria Companion" android:textSize="30sp"
-            android:textStyle="bold" android:textColor="#302735"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <TextView android:text="Your reminders, brought to life."
-            android:textSize="16sp" android:textColor="#766A79"
-            android:layout_marginTop="6dp"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-
-        <ImageView android:src="@drawable/companion_face" android:contentDescription="Cute companion"
-            android:layout_gravity="center_horizontal" android:layout_marginTop="24dp"
-            android:layout_width="150dp" android:layout_height="180dp"/>
-
-        <TextView android:text="Create a reminder" android:textSize="21sp"
-            android:textStyle="bold" android:textColor="#302735"
-            android:layout_marginTop="18dp"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-
-        <EditText android:id="@+id/messageInput" android:hint="What should your companion say?"
-            android:inputType="textCapSentences|textMultiLine" android:minLines="3"
-            android:gravity="top" android:padding="14dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:drawable/editbox_background"
-            android:layout_width="match_parent" android:layout_height="wrap_content"/>
-
-        <TimePicker android:id="@+id/timePicker" android:timePickerMode="spinner"
-            android:layout_marginTop="14dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content"/>
-
-        <Button android:id="@+id/saveButton" android:text="Set Reminder"
-            android:textAllCaps="false" android:layout_marginTop="18dp"
-            android:layout_width="match_parent" android:layout_height="54dp"/>
-
-        <TextView android:id="@+id/statusText" android:text="No reminder scheduled."
-            android:textColor="#766A79" android:textSize="14sp"
-            android:gravity="center" android:layout_marginTop="14dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content"/>
-    </LinearLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FFF8FC">
+<LinearLayout android:orientation="vertical" android:padding="24dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:text="Selorria Companion" android:textSize="30sp" android:textStyle="bold" android:textColor="#302735" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+<TextView android:text="Your reminders, brought to life." android:textSize="16sp" android:textColor="#766A79" android:layout_marginTop="6dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+<ImageView android:src="@drawable/companion_face" android:contentDescription="Cute companion" android:layout_gravity="center_horizontal" android:layout_marginTop="24dp" android:layout_width="150dp" android:layout_height="180dp"/>
+<TextView android:text="Create a reminder" android:textSize="21sp" android:textStyle="bold" android:textColor="#302735" android:layout_marginTop="18dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+<EditText android:id="@+id/messageInput" android:hint="What should your companion say?" android:inputType="textCapSentences|textMultiLine" android:minLines="3" android:gravity="top" android:padding="14dp" android:layout_marginTop="12dp" android:background="@android:drawable/editbox_background" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TimePicker android:id="@+id/timePicker" android:timePickerMode="spinner" android:layout_marginTop="14dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<Button android:id="@+id/saveButton" android:text="Set Reminder" android:textAllCaps="false" android:textSize="17sp" android:textStyle="bold" android:textColor="#FFFFFF" android:enabled="false" android:background="@drawable/reminder_button_background" android:layout_marginTop="18dp" android:layout_width="match_parent" android:layout_height="56dp"/>
+<TextView android:id="@+id/statusText" android:text="Enter a reminder message to continue." android:textColor="#766A79" android:textSize="14sp" android:gravity="center" android:layout_marginTop="14dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>
 </ScrollView>

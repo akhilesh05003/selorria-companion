@@ -59,3 +59,12 @@ lady design.
 2.5 — gestures and emotional state
 2.6 — AI-generated reminder dialogue
 2.7 — consent-based personalized voice
+
+
+## Build compatibility fix
+
+Phase 2.2 is pinned to the Android 35 / AGP 8.10 toolchain for the test build.
+The dependency set avoids the Compose 1.12.x / compileSdk 37 / AGP 9.1 requirement
+reported by AAR metadata checks.
+
+Gradle 8.11.1 is used because the Android Gradle Plugin requires it.

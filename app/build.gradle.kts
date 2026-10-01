@@ -39,7 +39,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
 
     // Current 3D/GLB renderer based on Filament.
-    implementation("io.github.sceneview:sceneview:4.51.0")
+    implementation("io.github.sceneview:sceneview:4.48.0")
 
     implementation("androidx.core:core-ktx:1.15.0")
 }

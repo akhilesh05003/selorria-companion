@@ -61,10 +61,21 @@ lady design.
 2.7 — consent-based personalized voice
 
 
-## Build compatibility fix
+## Android phone compatibility
 
-Phase 2.2 is pinned to the Android 35 / AGP 8.10 toolchain for the test build.
-The dependency set avoids the Compose 1.12.x / compileSdk 37 / AGP 9.1 requirement
-reported by AAR metadata checks.
+This build intentionally uses:
+- compileSdk 37
+- targetSdk 36
+- minSdk 24
+- Android Gradle Plugin 9.2.0
+- Gradle 9.4.1
+- Java 17
 
-Gradle 8.11.1 is used because the Android Gradle Plugin requires it.
+`compileSdk` controls the APIs available while compiling; it does not set the
+minimum Android version on which the app can run. `minSdk 24` keeps the app
+installable on Android 7.0+ devices when the device hardware and other runtime
+requirements are satisfied.
+
+SceneView's current Android dependency requires compileSdk 37. The project
+therefore uses the matching Android build toolchain instead of trying to force
+an older compile SDK.

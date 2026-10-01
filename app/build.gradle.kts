@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.selorria.companion"
-    compileSdk = 35
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.selorria.companion"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 20
         versionName = "2.0"
     }
@@ -39,7 +39,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
 
     // Current 3D/GLB renderer based on Filament.
-    implementation("io.github.sceneview:sceneview:4.48.0")
+    implementation("io.github.sceneview:sceneview:4.51.0")
 
     implementation("androidx.core:core-ktx:1.15.0")
 }

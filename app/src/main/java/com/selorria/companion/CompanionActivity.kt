@@ -112,10 +112,10 @@ class CompanionActivity : ComponentActivity() {
                         io.github.sceneview.node.ModelNode(
                             modelInstance = instance,
                             scaleToUnits = 1.6f,
-                            autoAnimate = true,
-                            animationName = animation,
-                            animationLoop = animation != "Blink",
-                            animationSpeed = if (animation == "Blink") 1.4f else 1f
+                            // SceneView 4.51.0 does not expose animationName,
+                            // animationLoop, or animationSpeed as constructor parameters.
+                            // Auto-play any clips embedded in the current GLB.
+                            autoAnimate = true
                         )
                     }
                 }
